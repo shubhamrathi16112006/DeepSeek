@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
+import Movie from "../components/Movie";
 import "../styles/Shop.css";
 
 export default function Shop() {
@@ -8,7 +9,10 @@ export default function Shop() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) return; // ✅ Check inside useEffect
+    if (!user) {
+      setLoading(false);
+      return;
+    }
     
     fetch("https://fakestoreapi.com/products")
       .then(res => res.json())
@@ -20,9 +24,8 @@ export default function Shop() {
         console.error("Error fetching products:", error);
         setLoading(false);
       });
-  }, [user]); // ✅ Add user dependency
+  }, [user]);
 
-  // ✅ CONDITIONAL RETURN AFTER ALL HOOKS
   if (!user) {
     return (
       <div className="not-logged-in">
@@ -31,4 +34,23 @@ export default function Shop() {
     );
   }
 
+  if (loading) {
+    return (
+      <div className="loading">
+        <h2>Loading products...</h2>
+      </div>
+    );
+  }
+
+  return (
+    <div className="shop-container">
+      <h1 className="shop-title">Our Products</h1>
+      <p className="welcome-message">Welcome, {user.username}! 👋</p>
+      <div className="products-grid">
+        {products.map((product) => (
+          <Movie key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
 }
