@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../context/UserContext";  // ✅ CORRECT
 import "./../styles/Header.css";
 
 export default function Header() {

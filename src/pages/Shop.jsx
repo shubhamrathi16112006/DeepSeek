@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
-import Moviecard from "../components/Moviecard";
+import "../components/Moviecard"
 import "../styles/Shop.css";
 
 export default function Shop() {

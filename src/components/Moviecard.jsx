@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function MovieCard({ product }) {
+export default function Moviecard({ product }) {
   return (
     <Link 
       to={`/product/${product.id}`}
