@@ -9,7 +9,8 @@ export default function MovieCard() {
       flexWrap: "wrap", 
       justifyContent: "center",
       padding: "20px",
-      gap: "20px"
+      gap: "20px",
+      marginTop: "80px"
     }}>
       {movies.map((movie) => (
         <Link 
@@ -22,19 +23,24 @@ export default function MovieCard() {
               src={movie.img} 
               alt={movie.name}
               className="img"
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/250x350/0000FF/FFFFFF?text=No+Image';
+              }}
             />
             <div style={{ padding: "10px" }}>
-              <h3>{movie.name}</h3>
+              <h3 style={{ margin: "10px 0", fontSize: "16px", height: "40px", overflow: "hidden" }}>
+                {movie.name}
+              </h3>
               <div className="movie_info">
                 <span>IMDb: {movie.Imdb}</span>
                 <span>{movie.Info}</span>
               </div>
               <div className="movie_data">
-                <span>Duration: {movie.time}</span>
+                <span>{movie.time}</span>
                 <span>{movie.run}</span>
               </div>
               <div className="movie_highlight">
-                <span>Character: {movie.char}</span>
+                <span>{movie.char}</span>
               </div>
             </div>
           </div>

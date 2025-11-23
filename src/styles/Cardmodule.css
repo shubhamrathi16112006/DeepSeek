@@ -1,23 +1,42 @@
 .shop {
   width: 250px;
   height: 500px;
-  border: 1px solid;
-  margin-top: 70px;
-  margin-left: 54px;
-  margin-right: 54px;
+  border: 1px solid #333;
   border-radius: 10px;
-  overflow:  hidden;
+  overflow: hidden;
   background-color: navy;
   color: white;
+  transition: transform 0.3s ease;
+}
+
+.shop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .movie_info, .movie_data, .movie_highlight {
   display: flex;
   justify-content: space-between;
-  padding: 3px 3px 3px 3px;
+  padding: 5px 8px;
+  font-size: 12px;
 }
 
-.img{
+.movie_info {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 5px 0;
+}
+
+.movie_data {
+  color: #ccc;
+}
+
+.movie_highlight {
+  font-weight: bold;
+  color: orange;
+}
+
+.img {
   width: 250px;
   height: 350px;
+  object-fit: cover;
 }
