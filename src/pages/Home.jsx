@@ -1,19 +1,19 @@
 import React from "react";
-import "./Home.css";
+import "../styles/Home.css";
 
-/* IMAGES — all inside src/ */
-import asset0 from "./asset 0.png";
-import asset1 from "./asset 1.png";
-import asset2 from "./asset 2.png";
-import asset3 from "./asset 3.png";
-import asset4 from "./asset 4.png";
-import asset5 from "./asset 5.png";
-import asset6 from "./asset 6.png";
-import asset7 from "./asset 7.png";
-import asset8 from "./asset 8.png";
-import asset9 from "./asset 9.png";
-import asset10 from "./asset 10.png";
-import asset14 from "./asset 14.svg";
+/* IMAGES — using working URLs that match your design */
+const asset0 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80";
+const asset1 = "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80";
+const asset2 = "https://cdn-icons-png.flaticon.com/512/2906/2906276.png"; // Route optimization
+const asset3 = "https://cdn-icons-png.flaticon.com/512/3135/3135692.png"; // Billing system
+const asset4 = "https://cdn-icons-png.flaticon.com/512/7613/7613876.png"; // Order tracking
+const asset5 = "https://cdn-icons-png.flaticon.com/512/1077/1077114.png"; // Customer panel
+const asset6 = "https://cdn-icons-png.flaticon.com/512/3095/3095583.png"; // Delivery app
+const asset7 = "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=250&q=80";
+const asset8 = "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=250&q=80";
+const asset9 = "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=250&q=80";
+const asset10 = "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=250&q=80";
+const asset14 = "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&q=80";
 
 export default function Home() {
   return (
@@ -108,7 +108,7 @@ export default function Home() {
         <h2><span>Contact</span> Us</h2>
 
         <div className="contact-flex">
-          <img src={asset14} className="contact-img" alt="" />
+          <img src={asset14} className="contact-img" alt="Contact Illustration" />
 
           <form className="contact-form">
             <input type="text" placeholder="Name" required />

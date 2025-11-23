@@ -8,7 +8,8 @@ export const UserProvider = ({ children }) => {
   );
 
   const login = (username, password) => {
-    const userData = { username };
+    // No credential verification - just set user
+    const userData = { username, isLoggedIn: true };
     setUser(userData);
     localStorage.setItem("userData", JSON.stringify(userData));
     return true;
@@ -27,7 +28,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, login, logout, setUser }}>
+    <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
   );

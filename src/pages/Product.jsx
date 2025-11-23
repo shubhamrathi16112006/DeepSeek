@@ -1,80 +1,86 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import movies from "../data/movies.json";  // ← FIXED IMPORT PATH
+import { useParams, Link } from "react-router-dom";
+import "../styles/Product.css";
 
 export default function Product() {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const foundMovie = movies.find(m => m.id === parseInt(id));
-    setMovie(foundMovie);
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setProduct(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching product:", error);
+        setLoading(false);
+      });
   }, [id]);
 
-  if (!movie) return <h2>Loading...</h2>;
+  if (loading) {
+    return (
+      <div className="loading">
+        <h2>Loading product details...</h2>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="error-container">
+        <h2>Product not found</h2>
+        <Link to="/shop" className="back-link">← Back to Shop</Link>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ 
-      padding: "40px", 
-      maxWidth: "1200px", 
-      margin: "0 auto",
-      display: "flex",
-      gap: "40px",
-      alignItems: "flex-start"
-    }}>
-      <img
-        src={movie.img}
-        alt={movie.name}
-        style={{ 
-          width: "400px", 
-          height: "500px", 
-          objectFit: "cover",
-          borderRadius: "10px"
-        }}
-      />
+    <div className="product-container">
+      <Link to="/shop" className="back-link">← Back to Shop</Link>
       
-      <div style={{ flex: 1 }}>
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>{movie.name}</h1>
-        
-        <div style={{ 
-          backgroundColor: "navy", 
-          color: "white", 
-          padding: "20px",
-          borderRadius: "10px",
-          marginBottom: "20px"
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-            <strong>IMDb Rating:</strong>
-            <span>{movie.Imdb}</span>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-            <strong>Genre:</strong>
-            <span>{movie.Info}</span>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-            <strong>Duration:</strong>
-            <span>{movie.time} ({movie.run})</span>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <strong>Main Character:</strong>
-            <span>{movie.char}</span>
-          </div>
+      <div className="product-detail">
+        <div className="product-image-section">
+          <img 
+            src={product.image} 
+            alt={product.title}
+            className="detail-image"
+          />
         </div>
         
-        <button 
-          style={{
-            padding: "12px 24px",
-            backgroundColor: "orange",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            fontSize: "16px",
-            cursor: "pointer"
-          }}
-        >
-          Watch Movie
-        </button>
+        <div className="product-info-section">
+          <h1 className="detail-title">{product.title}</h1>
+          
+          <div className="detail-category">{product.category}</div>
+          
+          <div className="detail-rating">
+            <span className="stars">⭐ {product.rating?.rate}</span>
+            <span className="review-count">({product.rating?.count} reviews)</span>
+          </div>
+          
+          <div className="detail-price">${product.price}</div>
+          
+          <p className="detail-description">{product.description}</p>
+          
+          <div className="action-buttons">
+            <button className="add-to-cart-btn">Add to Cart</button>
+            <button className="buy-now-btn">Buy Now</button>
+          </div>
+          
+          <div className="product-features">
+            <div className="feature">
+              <span>🚚 Free shipping</span>
+            </div>
+            <div className="feature">
+              <span>↩️ 30-day return</span>
+            </div>
+            <div className="feature">
+              <span>🔒 Secure payment</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

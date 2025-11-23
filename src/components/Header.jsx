@@ -1,9 +1,22 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 import "./../styles/Header.css";
-import { Link } from "react-router-dom";
-import logo from "./../assets/asset 0.png";
 
 export default function Header() {
+  const { user, logout } = useUser();
+  const navigate = useNavigate();
+  const logo = "https://via.placeholder.com/170x40/2563eb/ffffff?text=MilkRide+Logo";
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
+  const handleLogin = () => {
+    navigate("/Login");
+  };
+
   return (
     <header className="site-header">
       <div className="logo">
@@ -14,12 +27,20 @@ export default function Header() {
         <ul className="nav-list">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/About">About</Link></li>
-          <li><Link to="/Shop">Shop</Link></li>
+          {user && <li><Link to="/Shop">Shop</Link></li>}
           <li><Link to="/Contact">Contact</Link></li>
         </ul>
       </nav>
 
-      <button className="request-demo">Request Demo</button>
+      {user ? (
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      ) : (
+        <button className="login-btn" onClick={handleLogin}>
+          Login
+        </button>
+      )}
     </header>
   );
 }
