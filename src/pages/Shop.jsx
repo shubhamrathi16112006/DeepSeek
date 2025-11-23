@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
-import MovieCard from "../components/MovieCard";
+import Moviecard from "../components/Moviecard";
 import "../styles/Shop.css";
 
 export default function Shop() {
@@ -46,7 +46,7 @@ export default function Shop() {
       <p className="welcome-message">Welcome, {user.username}! 👋</p>
       <div className="products-grid">
         {products.map((product) => (
-          <MovieCard key={product.id} product={product} />
+          <Moviecard key={product.id} product={product} />
         ))}
       </div>
     </div>
