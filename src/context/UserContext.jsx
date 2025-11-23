@@ -8,7 +8,6 @@ export const UserProvider = ({ children }) => {
   );
 
   const login = (username, password) => {
-    // No credential verification - just set user
     const userData = { username, isLoggedIn: true };
     setUser(userData);
     localStorage.setItem("userData", JSON.stringify(userData));
@@ -40,4 +39,4 @@ export const useUser = () => {
     throw new Error("useUser must be used within a UserProvider");
   }
   return context;
-};
+}; // ✅ ADD THIS
