@@ -1,0 +1,16 @@
+a.active{
+    color: orange;
+    background-color: cadetblue;
+}
+
+*{
+    /* margin: 0; */
+    /* padding: 0; */
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+#logoutBtn:hover{
+    cursor: pointer;
+}

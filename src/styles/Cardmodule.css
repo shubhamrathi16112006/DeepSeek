@@ -1,0 +1,23 @@
+.shop {
+  width: 250px;
+  height: 500px;
+  border: 1px solid;
+  margin-top: 70px;
+  margin-left: 54px;
+  margin-right: 54px;
+  border-radius: 10px;
+  overflow:  hidden;
+  background-color: navy;
+  color: white;
+}
+
+.movie_info, .movie_data, .movie_highlight {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 3px 3px 3px;
+}
+
+.img{
+  width: 250px;
+  height: 350px;
+}
