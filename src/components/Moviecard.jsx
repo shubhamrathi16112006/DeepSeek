@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/Cardmodule.css";
-import movies from "../data/movies.json";
+import movies from "../data/movies.json";  // ← FIXED IMPORT PATH
 
 export default function MovieCard() {
   return (

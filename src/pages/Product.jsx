@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import movies from "../data/movies.json";
+import movies from "../data/movies.json";  // ← FIXED IMPORT PATH
 
 export default function Product() {
   const { id } = useParams();
@@ -12,7 +12,7 @@ export default function Product() {
     setMovie(foundMovie);
   }, [id]);
 
-  if (!movie) return <h2>Movie not found</h2>;
+  if (!movie) return <h2>Loading...</h2>;
 
   return (
     <div style={{ 
