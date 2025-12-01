@@ -19,6 +19,9 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("userData");
   };
 
+ // Add this to see if context is the issue
+console.log("UserContext rendering, user:", user);
+
   useEffect(() => {
     const storedUser = localStorage.getItem("userData");
     if (storedUser) {

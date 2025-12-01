@@ -15,12 +15,8 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
-      alert("Please enter username and password");
-      return;
-    }
-
-    const success = login(username, password);
+    // No validation - login with any input (even blank)
+    const success = login(username || "User", password || "password");
     if (success) {
       navigate(from, { replace: true });
     }
@@ -38,7 +34,6 @@ export default function Login() {
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required
             />
           </div>
 
@@ -49,7 +44,6 @@ export default function Login() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
           </div>
 
@@ -58,10 +52,6 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="login-note">
-          <p>💡 <strong>Note:</strong> No credential verification required.</p>
-          <p>Enter any username and password to login.</p>
-        </div>
       </div>
     </div>
   );

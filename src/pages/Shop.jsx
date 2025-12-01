@@ -9,11 +9,6 @@ export default function Shop() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) {
-      setLoading(false);
-      return;
-    }
-    
     fetch("https://fakestoreapi.com/products")
       .then(res => res.json())
       .then(data => {
@@ -24,15 +19,7 @@ export default function Shop() {
         console.error("Error fetching products:", error);
         setLoading(false);
       });
-  }, [user]);
-
-  if (!user) {
-    return (
-      <div className="not-logged-in">
-        <h2>Please login to access the shop</h2>
-      </div>
-    );
-  }
+  }, []);
 
   if (loading) {
     return (
@@ -44,8 +31,6 @@ export default function Shop() {
 
   return (
     <div className="shop-container">
-      <h1 className="shop-title">Our Products</h1>
-      <p className="welcome-message">Welcome, {user.username}! 👋</p>
       <div className="products-grid">
         {products.map((product) => (
           <Movie key={product.id} product={product} />

@@ -8,7 +8,7 @@ import Contact from "./pages/Contact";
 import AppLayout from "./components/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
-import Product from "./pages/Product";
+import Product from "./components/Product";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,18 +18,17 @@ function App() {
     },
     {
       path: "/",
-      element: <ProtectedRoute />,
+      element: (
+        <ProtectedRoute>
+          <AppLayout />
+        </ProtectedRoute>
+      ),
       children: [
-        {
-          element: <AppLayout />,
-          children: [
-            { index: true, element: <Home /> },
-            { path: "About", element: <About /> },
-            { path: "Shop", element: <Shop /> },
-            { path: "Contact", element: <Contact /> },
-            { path: "Product/:id", element: <Product /> },
-          ],
-        },
+        { index: true, element: <Home /> },
+        { path: "About", element: <About /> },
+        { path: "Shop", element: <Shop /> },
+        { path: "Contact", element: <Contact /> },
+        { path: "Product/:id", element: <Product /> },
       ],
     },
   ]);
